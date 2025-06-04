@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Foodsy</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            background-color: #f7f9f9;
+        }
+
+        nav{
+            background-color: white;
+            padding: 20px;
+            box-shadow: 2px 2px 5px lightgray;
+
+        }
+        nav section{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navleft{
+            color: red;
+            padding-left: 100px;
+            display: flex;
+        }
+
+        .lines{
+            display: none;
+        }
+       
+
+        .navright{
+            display: flex;
+            gap: 25px;
+            font-size: large;
+            cursor: pointer;
+            padding-right: 100px;
+            transition: all 0.3s ease;
+        }
+
+        .navhome:hover{
+            color: red;
+
+        }
+
+        .navmenu:hover{
+            color: red;
+        }
+
+        .navorders:hover{
+            color: red;
+        }
+
+        .navprofile:hover{
+            color: red;
+        }
+
+        .navcontact:hover{
+            color:red;
+        }
+
+        .domain{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: x-large;
+            font-weight: bold;
+        }
+
+        .mainclass{
+            display: flex;
+        }
+
+        .mainleft{
+            margin-top: 80px;
+            margin-left: 50px;
+        }
+
+        .burger{
+            width: 450px;
+        }
+
+        .mainright{
+            margin-top: 180px;
+            margin-left: 200px;
+            font-size: large;
+          
+            height: 180px;
+            padding: 10px;
+        }
+        
+        .title1{
+            color: red;
+            font-size: xx-large;
+        }
+
+        .title2{
+            font-size: xx-large;
+        }
+
+        .order{
+            padding: 10px;
+            background-color: #e31c1c;
+            color: white;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: medium;
+            border: none;
+            width: 150px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        .order:hover{
+            background-color: red;
+        }
+
+        .orderdiv{
+            margin-top: 20px;
+        }
+
+        .high{
+            color: red;
+        }
+
+        .foot{
+            margin-top: 100px;
+            text-align: center;
+        }
+
+       @media (max-width:768px) {
+
+    .navleft {
+        padding-left: 20px;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+    }
+
+    .lines {
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+        margin-left: auto;
+        user-select: none;
+    }
+
+    .domain {
+        font-size: 1.5rem;
+        margin-left: 0;
+    }
+
+    .navright {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        background: white;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 200px;
+        padding: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-radius: 0 0 0 10px;
+        z-index: 100;
+    }
+
+    .navright.show {
+        display: flex;
+    }
+
+    .mainclass {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .mainleft {
+        margin: 0;
+    }
+
+    .burger {
+        width: 90%;
+        max-width: 280px;
+    }
+
+    .mainright {
+        margin: 20px 0 0 0;
+        text-align: center;
+        padding: 0 15px;
+        font-size: 1rem;
+    }
+
+    .title1, .title2 {
+        font-size: 1.5rem;
+    }
+
+    .information,
+    .deliveryinformation,
+    .high {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .information{
+        text-align: justify;
+    }
+
+    .orderdiv {
+        margin-top: 20px;
+    }
+
+    .order {
+        width: 100%;
+        max-width: 200px;
+        font-size: 1rem;
+    }
+
+    .foot {
+        padding: 30px 10px 10px;
+        font-size: 0.9rem;
+        margin-top: 200px;
+    }
+    .break{
+        display: none;
+    }
+
+    
+}
+
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <section class="navbar">
+            <div class="navleft">
+                <p class="domain">Foodsy</p>
+                <p class="lines">&#9776;</p>
+            </div>
+
+            <div class="navright">
+                <p class="navhome">Home</p>
+                <p class="navmenu">Menu</p>
+                <p class="navorders">Orders</p>
+                <p class="navprofile">Profile</p>
+                <p class="navcontact">Contact</p>
+            </div>
+
+        </section>
+    </nav>
+
+    <div class="main">
+        <section class="mainclass">
+            <div class="mainleft">
+                <img src="Burger4.png" alt="Burger4" class="burger">
+            </div>
+
+            <div class="mainright">
+                <p class="title1">Delicious Food Delivered</p>
+                    <p class="title2">to Your Doorstep</p><br>
+                <p class="information">Craving a cheesy pizza, juicy burger, or spicy biryani? 🍔🍕🍛<span class="break"><br></span>
+                    With <span class="high"><strong>Foodsy</strong></span>, your favorite meals are just a few clicks away!<span class="break"><br></span>
+                    Enjoy a wide variety of dishes from top-rated local restaurants — hot, fresh, and fast.
+                </p>
+
+                <br>
+
+                <p class="deliveryinformation">
+                    <span class="high"><strong>Fast Delivery</strong></span> – Get food in under 30 minutes<br>
+                    <div class="easy">
+                        <span class="high"><strong>Easy Ordering</strong></span> – Seamless browsing and checkout experience<br>
+                    </div>
+
+                    <div class="secure">
+                        <span class="high"><strong>Secure Payments</strong></span> – Your data stays safe with us
+                    </div>
+                </p>
+                
+                <div class="orderdiv">
+                    <form action="order.html">
+                        <input type="submit" value="Order Now" class="order">
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p class="foot">© 2025 <span class="high">Foodsy</span>. All rights reserved.</p>
+    </footer>
+    <script>
+    const menuBtn = document.querySelector('.lines');
+    const navRight = document.querySelector('.navright');
+
+    menuBtn.addEventListener('click', () => {
+        navRight.classList.toggle('show');
+    });
+    </script>
+
+
+</body>
+</html>
