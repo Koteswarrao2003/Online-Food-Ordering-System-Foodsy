@@ -173,7 +173,7 @@
 
         .cart{
             padding: 8px;
-            border-radius: 10px;
+            border-radius: 50px;
             background-color: #e31c1c;
             color: white;
             transition: all 0.3s ease;
@@ -188,7 +188,8 @@
         }
 
        
-        
+
+       
 
         .moving{
             overflow: hidden;
@@ -196,11 +197,12 @@
             max-width: 1200px;
             border-radius: 10px;
             background-color: white;
-            box-shadow: 4px 4px 10px gray;
-            
-            padding: 20px 0;
+            box-shadow: 4px 4px 10px gray; 
+            padding: 20px 0; 
             
         }
+
+      
 
         .top,.down{
             display: flex;
@@ -463,13 +465,26 @@
             margin-top: -20px;
         }
 
+        .bestcolorr{
+            background-color: #FFC300;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            margin-top: 50px;
+            display: flex;
+        }
+
         .bestcolor{
             background-color: #FFC300;
             display: flex;
             justify-content: center;
+            align-items: center;
             padding-top: 30px;
             padding-bottom: 30px;
             margin-top: 50px;
+            display: flex;
         }
 
         .deliverypartnerinformation{
@@ -526,53 +541,123 @@
             margin-top: 100px;
         }
 
-        /* .delivery{
+        .divcontact{
+            
             display: flex;
-            background-color: #FFC300;
-            justify-content: space-evenly;
-            padding-top: 40px;
-            padding-bottom: 40px;
-     
-            padding-right: 20px;
-            margin-top: 100px;
-            margin-bottom: 100px;
-            height: 400px;
         }
 
-        .foodsey{
-            height: 200px;
-           
-        } */
+        .contactdiv{
+            background-color: #FFC300;
+            margin-top: 100px;
+            height: 72vh;
+            justify-content: space-evenly;
+        }
 
-        /* .foodimage{
+        .contactleft{
             display: flex;
             justify-content: center;
+            align-items: center; 
+            margin-left: 100px; 
+            margin-bottom: 50px;
+            
+        }
+        
+        .contactleftimage1{
+            height: 350px;
+        }
+        
+        .contactleftimage2{
+            height: 250px;
+            margin-top: 200px;
         }
 
-        .deliverypartnerinformation{
-            margin-left: 250px;
-            margin-right: 50px;
-
-        }
-
-        .deliveryleft{
-            background-color: white;
-            border-radius: 0px 10px 10px 0px;
-        }
-
-        .deliveryright{
-            width:100%
-        }
-
-        .deliveryimage{
-            max-width: 400px;
-        }
-
-        .homedelivery,.homedeliveryinformation{
+        .offers{
+            color: red;
             font-size: xx-large;
             font-weight: bold;
-        } */
-        
+        }
+
+        .offersinformation{
+            font-size: large;
+            margin-top: 10px;
+        }
+
+        .contactright{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin-left: 100px;
+        }
+
+        .subscribe{
+            margin-top: 10px;
+        }
+
+        .contactemail{
+            padding: 7px;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            width: 250px;
+        }
+
+        .contactemail:hover{
+            text-decoration: white;
+            border: white;
+        }
+
+        .contactsubscribe{
+            background-color: #e31c1c;
+            color: white;
+            border-radius: 50px;
+            padding: 7px;
+            width: 100px;
+            border: none;
+            cursor: pointer;
+            transition: all 1s ease;
+        }
+        .contactsubscribe:hover{
+            background-color: black;
+
+        }
+
+        .follow{
+            font-size: large;
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+
+        .in{
+            font-size: 22px;
+            transition: all 0.4s ease;
+        }
+
+        .in:hover{
+            color: #e31c1c;
+        }
+
+        .emailindia{
+            margin-top: 10px;
+            font-size: medium;
+        }
+
+        .foott{
+            text-align: center;
+
+        }
+
+       
+
+        .replaceone,.replacetwoo{
+            display: none;
+        }
+
+        /* footer{
+            background-color: #FFC300;
+        }
+         */
 
 
         @keyframes box-pop {
@@ -727,6 +812,7 @@
     }
     .moving{
         display: none;
+        
     }
             
 
@@ -785,5 +871,141 @@
     .bestcolor{
         display: none;
     }
+
+    .contactleft{
+        display: flex;
+        flex-direction: column;
+        margin-left: -10px;
+    }
+
+    .divcontact{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contactleftimage2{
+        display: none;
+    }
+
+    .contactright{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .offers{
+        text-align: center;
+        margin-top: -10px;
+    }
     
+    .offersinformation{
+        text-align: center;
+    }
+
+    .contactdiv{
+        height: 114vh;
+    }
+
+    .subscribe{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .follow{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .contactsubscribe{
+        margin-top: 15px;
+    }
+
+    .emailindia{
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .replaceone{
+        background-color: #FFC300;
+        color: black;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 30px;
+    }
+
+    .belowhead{
+        height: 400px;
+        margin-top: 20px;
+    }
+
+    .recipes{
+        font-size: xx-large;
+    }
+
+    .recipesemoji{
+        font-size: 40px;
+    }
+
+    .categoriitem{
+        padding: 10px;
+        background-color: #e31c1c;
+        color: white;
+        border-radius: 50px;
+        border: none;
+        width: 100px;
+    }
+
+    .categoriitemm{
+        padding: 10px;
+        background-color: black;
+        color: white;
+        border-radius: 50px;
+        border: none;
+        width: 100px;
+    }
+
+    .replacetwoo{
+        background-color: #FFC300;
+        padding: 20px 0px 20px 0px;
+        display: block;
+    }
+
+    .replacetwo{
+        display: flex;
+        justify-content: space-evenly;
+        
+    }
+
+    .replacetworight{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+        margin-left: -10px;
+    }
+
+    .browse{
+        color: black;
+        text-align: center;
+        font-size: x-large;
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+    
+    .categorieshead{
+        height: 250px;
+        margin-left: -35px;
+    }
+
+    .categoriemoji{
+        font-size: xx-large;
+    }
+
 }
