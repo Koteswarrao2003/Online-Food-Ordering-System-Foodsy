@@ -1,0 +1,186 @@
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            background-color: #f7f9f9;
+        }
+
+        nav{
+            background-color: white;
+            padding: 30px;
+            box-shadow: 2px 2px 5px lightgray;
+            position: -webkit-sticky;
+        }
+        nav section{
+            display: flex;
+            justify-content: space-between;
+            position: -webkit-sticky;
+        }
+
+        .navleft{
+            color: red;
+            padding-left: 100px;
+            display: flex;
+        }
+
+        .lines{
+            display: none;
+        }
+       
+
+        .navright{
+            display: flex;
+            gap: 25px;
+            font-size: large;
+            cursor: pointer;
+            padding-right: 100px;
+            transition: all 0.3s ease;
+        }
+
+        .navhome:hover{
+            color: red;
+
+        }
+
+        .navmenu:hover{
+            color: red;
+        }
+
+        .navorders:hover{
+            color: red;
+        }
+
+        .navprofile:hover{
+            color: red;
+        }
+
+        .navcontact:hover{
+            color:red;
+        }
+
+        .domain{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: x-large;
+            font-weight: bold;
+        }
+
+        .aboutmain{
+            margin: 80px;
+            display: flex;
+        }
+
+        .aboutlong{
+            color: red;
+            font-size: xx-large;
+            margin-bottom: 20px;
+        }
+
+        .aboutlongg{
+            color: red;
+            font-size: xx-large;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .aboutinformation{
+            font-size: x-large;
+            text-align: justify;
+        }
+
+        strong,.seperatecolor{
+            color: #00aaff;
+        }
+        .nextline{
+            display: none;
+        }
+
+        .breakk2{
+            display: none;
+        }
+        a{
+            text-decoration: none;
+            color:black;
+        }
+
+        .foot{
+            margin-top: 80px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+    @media (max-width:768px) {
+
+    .navleft {
+        padding-left: 20px;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+    }
+
+    .lines {
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+        margin-left: auto;
+        user-select: none;
+        margin-top: -15px;   
+    }
+
+    .breakk2{
+        display: block;
+    }
+
+
+    .domain {
+        font-size: 1.5rem;
+        margin-left: 0;
+        margin-top: -15px;
+    }
+
+    .Welcome{
+        font-size: x-large;
+    }
+    nav{
+        height: 10px;
+    }
+
+    .navright {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        background: white;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 200px;
+        padding: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-radius: 0 0 0 10px;
+        z-index: 100;
+    }
+
+    
+    .navright.show {
+        display: flex;
+    }
+
+    .aboutmain{
+        margin: 50px;
+    }
+
+    .space{
+        display: none;
+    }
+    
+    
+    .foot {
+        padding: 30px 10px 10px;
+        font-size: 0.9rem;
+        margin-top: 210px;
+        margin-bottom: 10px;
+    }
+   
+}
