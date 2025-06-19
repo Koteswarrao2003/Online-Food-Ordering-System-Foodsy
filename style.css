@@ -11,7 +11,7 @@
 
         nav{
             background-color: white;
-            padding: 20px;
+            padding: 30px;
             box-shadow: 2px 2px 5px lightgray;
             position: -webkit-sticky;
         }
@@ -567,6 +567,7 @@
             margin-top: 100px;
             height: 72vh;
             justify-content: space-evenly;
+            padding-bottom: 10px;
         }
 
         .contactleft{
@@ -661,7 +662,7 @@
 
         .foott{
             text-align: center;
-
+          
         }
 
        .download{
