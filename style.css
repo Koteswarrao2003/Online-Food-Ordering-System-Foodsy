@@ -672,6 +672,7 @@
         background-color: #FFC300;
         margin-top: 100px;
         margin-bottom: 100px;
+        padding: 30px;
        }
 
        .downloadfoodsybox2{
@@ -696,6 +697,12 @@
 
        .downloadinformation{
         font-size: large;
+       }
+
+       .inf{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: x-large;
        }
 
        .qrimage{
@@ -758,6 +765,26 @@
         justify-content: flex-start;
         align-items: center;
         width: 100%;
+    }
+
+    .downloadleftlogo{
+        display: flex;
+        justify-content: center;
+    }
+
+    .inf, .downloadinformationn{
+        display: none;
+    }
+
+    .downloadnow{
+        font-size: x-large;
+        padding-bottom: 10px;
+    }
+
+    .download{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
     }
 
     .lines {
