@@ -157,7 +157,7 @@
         .overlay{
             position: absolute;
             bottom: 0;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             /* background-color: #FFC300; */
             /* background: rgba(15, 14, 14, 0.7); */
             /* background-color: black; */
@@ -664,7 +664,43 @@
 
         }
 
-       
+       .download{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: #FFC300;
+        margin-top: 100px;
+        margin-bottom: 100px;
+       }
+
+       .downloadfoodsybox2{
+        height: 100%;
+        max-height: 80px;
+       }
+
+       .downloadleftlogo{
+        display: flex;
+        align-items: center;
+       }
+
+       .downloadname{
+        font-size: xx-large;
+       }
+
+       .downloadnow{
+        font-size: xx-large;
+        color: red;
+        font-weight: bold;
+       }
+
+       .downloadinformation{
+        font-size: large;
+       }
+
+       .qrimage{
+        height: 100%;
+        max-height: 400px;
+       }
 
         .replaceone,.replacetwoo{
             display: none;
