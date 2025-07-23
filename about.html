@@ -26,7 +26,7 @@
                 <a href="#">
                     <p class="navcontact">Order</p>
                 </a>
-                <a href="#">
+                <a href="contact.html">
                     <p class="navcontact">Contact</p>
                 </a>
                 <a href="about.html">
@@ -74,9 +74,6 @@
                         specialties to a wider audience, boosting the localfood economy and creating new opportunities.
                 </p>
             </div>
-
-           
-
         </div>
     </div>
     
@@ -86,11 +83,13 @@
     </footer>
 
     <script>
-    const menuBtn = document.querySelector('.lines');
-    const navRight = document.querySelector('.navright');
+    document.addEventListener("DOMContentLoaded", function () {
+        const linesIcon = document.querySelector(".lines");
+        const navRight = document.querySelector(".navright");
 
-    menuBtn.addEventListener('click', () => {
-        navRight.classList.toggle('show');
+        linesIcon.addEventListener("click", () => {
+        navRight.classList.toggle("show");
+        });
     });
     </script>
 
