@@ -14,11 +14,17 @@
             padding: 20px;
             box-shadow: 2px 2px 5px lightgray;
             position: -webkit-sticky;
+            position: static;
+            top: 0;
+            z-index: 100;
         }
         nav section{
             display: flex;
             justify-content: space-between;
             position: -webkit-sticky;
+            position: static;
+            top: 0;
+            z-index: 100;
         }
 
         .navleft{
@@ -125,6 +131,7 @@
 
         .high{
             color: red;
+            font-style: italic;
         }
 
         .foot{
@@ -697,6 +704,12 @@
         font-size: xx-large;
        }
 
+       nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
        .downloadnow{
         font-size: xx-large;
         color: red;
@@ -743,11 +756,6 @@
             }
         }
 
-
-
-
-
-
         @keyframes scrollLeft {
             0%{
                 transform: translateX(0);
@@ -773,6 +781,12 @@
         justify-content: flex-start;
         align-items: center;
         width: 100%;
+    }
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
     }
 
     .downloadleftlogo{
@@ -818,7 +832,8 @@
     }
 
     .navright {
-        display: none;
+        max-height: 0;
+        overflow: hidden;
         flex-direction: column;
         gap: 15px;
         background: white;
@@ -826,16 +841,18 @@
         top: 70px;
         right: 0;
         width: 200px;
-        padding: 15px;
+        padding: 0 15px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         border-radius: 0 0 0 10px;
         z-index: 100;
+        transition: max-height 0.4s ease, padding 0.3s ease;
     }
 
     .navright.show {
-        display: flex;
+        max-height: 500px; /* enough height to fit menu items */
+        padding: 15px;
     }
-
+    
     .mainclass {
         display: flex;
         flex-direction: column;
@@ -1104,4 +1121,4 @@
         display: none;
     }
 
-}
+}   
