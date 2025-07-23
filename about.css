@@ -1,23 +1,41 @@
 
-        *{
-            margin: 0;
-            padding: 0;
-        }
+        
+*{
+    margin: 0;
+    padding: 0;
+    
+}
 
-        body{
-            background-color: #f7f9f9;
-        }
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
+main {
+  flex: 1;
+}
+
+body{
+    background-color: #f7fafc;
+}
         nav{
             background-color: white;
-            padding: 30px;
+            padding: 20px;
             box-shadow: 2px 2px 5px lightgray;
-            position: -webkit-sticky;
+            height: 30px;
         }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
         nav section{
             display: flex;
             justify-content: space-between;
-            position: -webkit-sticky;
+            
         }
 
         .navleft{
@@ -29,9 +47,7 @@
         .lines{
             display: none;
         }
-       
-
-        .navright{
+       .navright{
             display: flex;
             gap: 25px;
             font-size: large;
@@ -40,6 +56,7 @@
             transition: all 0.3s ease;
         }
 
+        
         .navhome:hover{
             color: red;
 
@@ -66,6 +83,11 @@
             font-size: x-large;
             font-weight: bold;
         }
+        nav a{
+        text-decoration: none;
+        color: black;
+        }
+
 
         .aboutmain{
             margin: 80px;
@@ -106,12 +128,22 @@
         }
 
         .foot{
-            margin-top: 80px;
             text-align: center;
             margin-bottom: 20px;
+            font-size: large;
+        }
+
+        .high{
+            color: red;
+            font-style: italic;
         }
 
     @media (max-width:768px) {
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
 
     .navleft {
         padding-left: 20px;
@@ -126,7 +158,7 @@
         cursor: pointer;
         margin-left: auto;
         user-select: none;
-        margin-top: -15px;   
+        margin-top: -10px;   
     }
 
     .breakk2{
@@ -144,11 +176,12 @@
         font-size: x-large;
     }
     nav{
-        height: 10px;
+        height: 30px;
     }
 
     .navright {
-        display: none;
+        max-height: 0;
+        overflow: hidden;
         flex-direction: column;
         gap: 15px;
         background: white;
@@ -156,15 +189,16 @@
         top: 70px;
         right: 0;
         width: 200px;
-        padding: 15px;
+        padding: 0 15px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         border-radius: 0 0 0 10px;
         z-index: 100;
+        transition: max-height 0.4s ease, padding 0.3s ease;
     }
 
-    
     .navright.show {
-        display: flex;
+        max-height: 500px; /* enough height to fit menu items */
+        padding: 15px;
     }
 
     .aboutmain{
@@ -181,6 +215,12 @@
         font-size: 0.9rem;
         margin-top: 210px;
         margin-bottom: 10px;
+    }
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
     }
    
 }
