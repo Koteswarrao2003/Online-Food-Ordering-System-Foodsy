@@ -119,7 +119,7 @@ i{
 }
 
 .symbol{
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .name{
@@ -198,6 +198,8 @@ footer {
     font-size: large;
     font-style: italic;
 }
+
+
 
 @media (max-width:768px) {
 
