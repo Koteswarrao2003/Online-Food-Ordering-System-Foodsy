@@ -631,11 +631,15 @@
             border-radius: 50px;
             text-decoration: none;
             width: 250px;
+            padding-left: 15px;
+            
         }
 
         .contactemail:hover{
             text-decoration: white;
             border: white;
+            
+
         }
 
         .contactsubscribe{
