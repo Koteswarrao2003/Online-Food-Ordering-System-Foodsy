@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="carts.css">
+</head>
+<body>
+
+    <nav>
+        <section class="navbar">
+            <div class="navleft">
+                <p class="domain">Foodsy</p>
+                <p class="lines">&#9776;</p>
+            </div>
+
+            <div class="navright">
+                <a href="index.html">
+                    <p class="navcontact">Home</p>
+                </a>
+                <a href="menu.html">
+                    <p class="navcontact">Menu</p>
+                </a>
+                <a href="carts.html">
+                    <p class="navcontact">Cart</p>
+                </a>
+                <a href="contact.html">
+                    <p class="navcontact">Contact</p>
+                </a>
+                <a href="about.html">
+                    <p class="navcontact">About</p>
+                </a>
+            </div>
+
+        </section>
+    </nav>
+
+    <div class="cartdetails">
+      <h1 style="text-align:center; color:red;">My Cart</h1>
+  <div id="cart-container">
+    <div id="cart-list"></div>
+    <h2 id="total"></h2>
+    <button onclick="checkout()" class="checkout-btn">Checkout</button>
+  </div>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let list = document.getElementById("cart-list");
+
+    function renderCart() {
+      list.innerHTML = "";
+      let total = 0;
+
+      if (cart.length === 0) {
+        list.innerHTML = "<p style='text-align:center;'>Your cart is empty 🛍️</p>";
+      } else {
+        cart.forEach((item, index) => {
+          let div = document.createElement("div");
+          div.classList.add("cart-item");
+          div.innerHTML = `
+            <img src="${item.img}" alt="${item.name}">
+            <span class="cart-name">${item.name}</span>
+            <span class="cart-price">₹${item.unitPrice}</span>
+            <div class="qty-controls">
+              <button class="qty-btn" onclick="decreaseQty(${index})">-</button>
+              <span>${item.qty}</span>
+              <button class="qty-btn" onclick="increaseQty(${index})">+</button>
+            </div>
+            <span class="subtotal">₹${item.total}</span>
+            <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+          `;
+          list.appendChild(div);
+
+          total += item.total;
+        });
+
+        document.getElementById("total").innerText = "Total: ₹" + total;
+      }
+    }
+
+    // Increase quantity
+    function increaseQty(index) {
+      cart[index].qty++;
+      cart[index].total = cart[index].qty * cart[index].unitPrice;
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    // Decrease quantity
+    function decreaseQty(index) {
+      if (cart[index].qty > 1) {
+        cart[index].qty--;
+        cart[index].total = cart[index].qty * cart[index].unitPrice;
+      } else {
+        cart.splice(index, 1);
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    // Remove item completely
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    // Checkout
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Your cart is empty");
+        return;
+      }
+      alert("Order placed successfully!");
+      localStorage.removeItem("cart");
+      location.reload();
+    }
+
+    renderCart();
+  </script>
+
+  <script>
+    const menuBtn = document.querySelector('.lines');
+    const navRight = document.querySelector('.navright');
+
+    menuBtn.addEventListener('click', () => {
+        navRight.classList.toggle('show');
+    });
+    setTimeout(() => {
+      document.querySelector(".loader").style.display = "none";
+      document.querySelector(".main-content").classList.remove("hidden");
+    }, 1500);
+
+    </script>
+    
+</body>
+</html>
