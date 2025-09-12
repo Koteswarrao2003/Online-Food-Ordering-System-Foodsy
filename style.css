@@ -47,6 +47,15 @@
             transition: all 0.3s ease;
         }
 
+        .carting{
+            display: flex;
+        }
+
+        .cartlogo{
+            font-size: 20px;
+            color: black;    
+        }
+
         .welcomediv{
             padding-top: 50px;
         }
