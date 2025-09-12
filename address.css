@@ -1,0 +1,192 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+body{
+    background-color: #FFC300;
+}
+        nav{
+            background-color: white;
+            padding: 20px;
+            box-shadow: 2px 2px 5px lightgray;
+            height: 30px;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav section{
+            display: flex;
+            justify-content: space-between;
+            
+        }
+
+        .navleft{
+            color: red;
+            padding-left: 100px;
+            display: flex;
+        }
+
+
+        .lines{
+            display: none;
+        }
+       .navright{
+            display: flex;
+            gap: 25px;
+            font-size: large;
+            cursor: pointer;
+            padding-right: 100px;
+            transition: all 0.3s ease;
+        }
+
+         .carting{
+            display: flex;
+        }
+
+        .cartlogo{
+            font-size: 20px;
+            color: black;    
+        }
+
+        
+        .navhome:hover{
+            color: red;
+
+        }
+
+        .navmenu:hover{
+            color: red;
+        }
+
+        .navorders:hover{
+            color: red;
+        }
+
+        .navprofile:hover{
+            color: red;
+        }
+
+        .navcontact:hover{
+            color:red;
+        }
+
+        .domain{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: x-large;
+            font-weight: bold;
+        }
+
+.contact{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    
+}
+
+.contacts{
+    margin-top: 20px;
+}
+
+nav a{
+text-decoration: none;
+color: black;
+}
+
+h2 { 
+        text-align: center; 
+        color: red; 
+    }
+    /* .firstform {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 40%;
+        background-color: #ffffff;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        border-radius: 8px;
+        gap: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    } */
+    .details {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        align-items: center;
+    }
+    .in {
+        width: 90%;
+        max-width: 300px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+    .button, .home {
+        width: 150px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: green;
+        color: #ffffff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .button:hover, .home:hover {
+        background-color: darkgreen;
+    }
+    .buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .insertimage{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .delivery{
+        height: 300px;
+        width: 300px;
+    }
+
+    .deliverydetails{
+        margin-top: 30px;
+    }
+
+    .content {
+    flex: 1;
+}
+    .foot{
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: large;
+            margin-top: 50px;
+        }
+
+        .high{
+            color: red;
+            font-style: italic;
+        }
