@@ -929,16 +929,16 @@ document.querySelectorAll(".cart").forEach(button => {
     const priceText = card.querySelector(".price").innerText;
     const img = card.querySelector("img").src;
 
-    // Convert ₹199 → 199
+    
     const unitPrice = parseInt(priceText.replace(/[^0-9]/g, ""));
 
-    // Default quantity = 1
+  
     let qty = 1;
 
-    // Get existing cart
+   
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    // Check if item already in cart
+    
     const existing = cart.find(item => item.name === name);
     if (existing) {
       existing.qty += qty;
@@ -953,15 +953,14 @@ document.querySelectorAll(".cart").forEach(button => {
       });
     }
 
-    // Save updated cart
+   
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    // ✅ Show animated toast
+  
     showToast(`${name} added to cart `);
   });
 });
 
-// Function to show toast message
 function showToast(message) {
   const toast = document.createElement("div");
   toast.innerText = message;
@@ -982,13 +981,13 @@ function showToast(message) {
 
   document.body.appendChild(toast);
 
-  // Trigger animation
+  
   setTimeout(() => {
     toast.style.opacity = "1";
     toast.style.transform = "translateX(-50%) translateY(10px)";
   }, 50);
 
-  // Remove after 2.5s
+
   setTimeout(() => {
     toast.style.opacity = "0";
     toast.style.transform = "translateX(-50%) translateY(-20px)";
@@ -999,3 +998,4 @@ function showToast(message) {
 
 </body>
 </html>
+
