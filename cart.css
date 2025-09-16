@@ -227,7 +227,7 @@ h1{
      .foot{
             text-align: center;
             margin-bottom: 20px;
-            font-size: large;
+            font-size: medium;
         }
 
         .high{
@@ -235,27 +235,6 @@ h1{
             font-style: italic;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
 
   @media (max-width:768px) {
 
@@ -332,7 +311,7 @@ h1{
     }
 
     .navright.show {
-        max-height: 500px; /* enough height to fit menu items */
+        max-height: 500px; 
         padding: 15px;
     }
 
@@ -345,7 +324,7 @@ h1{
     }
 
     .cart-item {
-        grid-template-columns: 1fr 80px 100px; /* name, qty, subtotal */
+        grid-template-columns: 1fr 80px 100px;
         gap: 10px;
     }
 
@@ -362,7 +341,7 @@ h1{
     }
 
     .cart-price {
-        display: none; /* hide extra price column (already included in subtotal) */
+        display: none;
     }
 
     .subtotal {
