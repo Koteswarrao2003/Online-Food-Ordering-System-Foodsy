@@ -173,20 +173,116 @@ h2 {
     }
 
     .deliverydetails{
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
     .content {
     flex: 1;
 }
-    .foot{
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: large;
-            margin-top: 50px;
+   footer {
+    margin-top: auto;  
+    padding: 15px 10px;
+    text-align: center;
+}
+
+.error {
+      color: red;
+      font-size: 15px;
+      display: block;
+      margin-top: -6px;
+      margin-bottom: 8px;
+    }
+    .in.invalid {
+      border: 1px solid red;
+    }
+
+.foot {
+    font-size: medium;
+    margin: 0; 
+}
+
+.high {
+    color: red;
+    font-style: italic;
+}
+
+
+
+     @media (max-width:768px) {
+
+        *{
+            margin: 0;
+            padding: 0;
         }
 
-        .high{
-            color: red;
-            font-style: italic;
-        }
+    .navleft {
+        padding-left: 20px;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+    }
+
+    .lines {
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+        margin-left: auto;
+        user-select: none;
+        margin-top: -10px;   
+    }
+
+    .breakk2{
+        display: block;
+    }
+
+
+    .domain {
+        font-size: 1.5rem;
+        margin-left: 0;
+        margin-top: -15px;
+    }
+
+    .Welcome{
+        font-size: x-large;
+    }
+    nav{
+        height: 30px;
+    }
+
+    .navright {
+        max-height: 0;
+        overflow: hidden;
+        flex-direction: column;
+        gap: 15px;
+        background: white;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 200px;
+        padding: 0 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-radius: 0 0 0 10px;
+        z-index: 100;
+        transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+
+    .navright.show {
+        max-height: 500px; 
+        padding: 15px;
+    }
+
+    .aboutmain{
+        margin: 50px;
+    }
+
+    .space{
+        display: none;
+    }
+    
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+   
+}
