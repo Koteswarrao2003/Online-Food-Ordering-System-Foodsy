@@ -113,17 +113,17 @@ h1{
 
 i{
     color: green;
+    font-size: large;
+}
+
+i:hover{
+    color: black;
 }
 
 .malinga{
     display: flex;
     gap: 20px;
     
-}
-
-i{
-    font-size: large;
-
 }
 
 .symbol{
@@ -141,7 +141,7 @@ i{
 
 .icons{
     display: flex;
-    gap: 10px;
+    gap: 15px;
     text-align: center
 }
 
