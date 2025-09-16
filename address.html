@@ -1,101 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0", user-scalable=no">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Foodsy</title>
-    <link rel="icon" href="Foodsybox2.png">
-    <link rel="stylesheet" href="address.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Foodsy</title>
+  <link rel="icon" href="Foodsybox2.png">
+  <link rel="stylesheet" href="address.css">
+
 </head>
 <body>
-    <nav>
-        <section class="navbar">
-            <div class="navleft">
-                <p class="domain">Foodsy</p>
-                <p class="lines">&#9776;</p>
-            </div>
+  <nav>
+    <section class="navbar">
+      <div class="navleft">
+        <p class="domain">Foodsy</p>
+        <p class="lines">&#9776;</p>
+      </div>
 
-            <div class="navright">
-                <a href="index.html">
-                    <p class="navcontact">Home</p>
-                </a>
-                <a href="menu.html">
-                    <p class="navcontact">Menu</p>
-                </a>
-                <a href="contact.html">
-                    <p class="navcontact">Contact</p>
-                </a>
-                <a href="about.html">
-                    <p class="navcontact">About</p>
-                </a>
-                <a href="cart.html" class="carting">
-                    <i class="fa-solid fa-cart-shopping cartlogo"></i>
-                    <p class="navcontact">Cart</p>
-                </a>
-            </div>
+      <div class="navright">
+        <a href="index.html"><p class="navcontact">Home</p></a>
+        <a href="menu.html"><p class="navcontact">Menu</p></a>
+        <a href="contact.html"><p class="navcontact">Contact</p></a>
+        <a href="about.html"><p class="navcontact">About</p></a>
+        <a href="cart.html" class="carting">
+          <i class="fa-solid fa-cart-shopping cartlogo"></i>
+          <p class="navcontact">Cart</p>
+        </a>
+      </div>
+    </section>
+  </nav>
 
-        </section>
-    </nav>
-
-    <div class="deliverydetails">
-
-            <h2>Enter Delivery Details</h2>
-        
-        <div class="insertimage">
-            <img src="Delivery image.png" alt="Delivery Image" class="delivery">
-        </div>
-        
-        <form id="orderForm" class="firstform">
-            <div class="details">
-                <input type="text" id="name" placeholder="Full Name" required class="in">
-                <input type="text" id="phone" placeholder="Phone Number" required class="in">
-                <textarea id="address" placeholder="Delivery Address" rows="4" required class="in"></textarea>
-                <div class="buttons">
-                    <button type="button" class="home" onclick="window.location.href='index.html'">Home</button>
-                    <button type="submit" class="button">Proceed to Pay</button>
-                </div>
-            </div>
-        </form>
+  <div class="deliverydetails">
+    <h2>Enter Delivery Details</h2>
+    
+    <div class="insertimage">
+      <img src="Delivery image.png" alt="Delivery Image" class="delivery">
     </div>
 
-    <footer>
-        <p class="foot">© 2025 <span class="high">Foodsy</span>. All rights reserved.</p>
-    </footer>
 
-<script>
-let cart = JSON.parse(localStorage.getItem("checkoutCart")) || [];
+    
+    <form id="orderForm" class="firstform" novalidate>
+      <div class="details">
+        <input type="text" id="name" placeholder="Full Name*" required class="in">
+        <small id="nameError" class="error"></small>
 
-document.getElementById("orderForm").addEventListener("submit", function(e){
-    e.preventDefault();
+        <input type="tel" id="phone" placeholder="Phone Number*" required class="in" inputmode="numeric" pattern="[0-9]{10}">
+        <small id="phoneError" class="error"></small>
 
-    if(cart.length === 0){
+        <textarea id="address" placeholder="Delivery Address*" rows="4" required class="in"></textarea>
+        <small id="addressError" class="error"></small>
+
+        <div class="buttons">
+          <button type="button" class="home" onclick="window.location.href='index.html'">Home</button>
+          <button type="submit" class="button">Proceed to Pay</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <footer>
+    <p class="foot">© 2025 <span class="high">Foodsy</span>. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem("checkoutCart")) || [];
+
+    const orderForm = document.getElementById("orderForm");
+    orderForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      let valid = true;
+
+      const name = document.getElementById("name");
+      const phone = document.getElementById("phone");
+      const address = document.getElementById("address");
+
+    
+      document.querySelectorAll(".error").forEach(el => el.textContent = "");
+      [name, phone, address].forEach(el => el.classList.remove("invalid"));
+
+    
+      const nameRegex = /^[A-Za-z\s]{3,}$/;
+      if (!nameRegex.test(name.value.trim())) {
+        document.getElementById("nameError").textContent = "Enter at least 3 letters (only alphabets).";
+        name.classList.add("invalid");
+        valid = false;
+      }
+
+      
+      const phoneRegex = /^[0-9]{10}$/;
+      if (!phoneRegex.test(phone.value.trim())) {
+        document.getElementById("phoneError").textContent = "Enter a valid 10-digit phone number.";
+        phone.classList.add("invalid");
+        valid = false;
+      }
+
+   
+      if (address.value.trim().length < 10) {
+        document.getElementById("addressError").textContent = "Enter at least 10 characters for address.";
+        address.classList.add("invalid");
+        valid = false;
+      }
+
+      if (!valid) return; 
+      if (cart.length === 0) {
         alert("Your cart is empty!");
-        window.location.href = "carts.html";
+        window.location.href = "cart.html";
         return;
+      }
+
+      
+const orderData = {
+  userName: name.value.trim(),
+  items: cart.map(item => ({
+    name: item.name,
+    unitPrice: item.unitPrice,
+    qty: item.qty,
+    total: item.total
+  })),
+  totalAmount: cart.reduce((sum, item) => sum + item.total, 0)
+};
+
+localStorage.setItem("orderData", JSON.stringify(orderData));
+window.location.href = "payment.html";
+
+    });
+
+    
+    const menuBtn = document.querySelector('.lines');
+    const navRight = document.querySelector('.navright');
+    if (menuBtn && navRight) {
+      menuBtn.addEventListener('click', () => navRight.classList.toggle('show'));
     }
 
-    let name = document.getElementById("name").value;
-    let phone = document.getElementById("phone").value;
-    let address = document.getElementById("address").value;
-
-    // Prepare order summary (only name, first item name, and price)
-    let firstItem = cart[0]; // or loop if you want multiple items
-    let orderData = {
-        userName: name,
-        itemName: firstItem.name,
-        itemPrice: firstItem.unitPrice
-    };
-
-    // Store in localStorage for payment.html
-    localStorage.setItem("orderData", JSON.stringify(orderData));
-
-    // Redirect to payment page
-    window.location.href = "payment.html";
-});
-</script>
-
+    
+    setTimeout(() => {
+      const loader = document.querySelector(".loader");
+      const main = document.querySelector(".main-content");
+      if (loader) loader.style.display = "none";
+      if (main) main.classList.remove("hidden");
+    }, 1500);
+  </script>
 </body>
-
 </html>
-
