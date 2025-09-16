@@ -154,7 +154,11 @@ color: black;
             max-height: 300px;
             border-radius: 10px;
             position: relative;
-         
+            transition: all 0.3s ease;
+        }
+
+        .food-card:hover{
+            transform: scale(1.03);
         }
 
         .ek{
@@ -190,7 +194,7 @@ color: black;
         .cart{
             padding: 8px;
             border-radius: 50px;
-            background-color: #e31c1c;
+            background-color: red;
             color: white;
             transition: all 0.3s ease;
             border: none;
@@ -199,7 +203,7 @@ color: black;
         }
 
         .cart:hover{
-            background-color: red;
+            background-color: black;
             cursor: pointer;
         }
 
@@ -284,6 +288,10 @@ footer {
   font-size: 18px;
   margin: 0 6px;
 }
+
+ .navcnt:hover{
+        color: red;
+    }
 
 
 .fade-out {
@@ -374,6 +382,12 @@ footer {
     .navcnt{
         margin-left: -35px;
     }
+
+    .navcnt:hover{
+        color: red;
+    }
+
+    
 
     .rightnav{
     position: fixed;
