@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Foodsy</title>
+  <link rel="stylesheet" href="payment.css">
+  <link rel="icon" href="Foodsybox2.png">
+</head>
+<body>
+    
+  <nav>
+    <section class="navbar">
+      <div class="navleft">
+        <p class="domain">Foodsy</p>
+        <p class="lines">&#9776;</p>
+      </div>
+      <div class="navright">
+        <a href="index.html"><p class="navcontact">Home</p></a>
+        <a href="menu.html"><p class="navcontact">Menu</p></a>
+        <a href="contact.html"><p class="navcontact">Contact</p></a>
+        <a href="about.html"><p class="navcontact">About</p></a>
+        <a href="cart.html" class="carting">
+          <i class="fa-solid fa-cart-shopping cartlogo"></i>
+          <p class="navcontact">Cart</p>
+        </a>
+      </div>
+    </section>
+  </nav>
+
+  <main>
+    <section class="payment-container">
+      <h2 class="pay-title">Choose Payment Method</h2>
+      <div class="payment-options">
+        <div class="pay-card">
+          <i class="fa-solid fa-credit-card pay-icon"></i>
+          <h3>Credit / Debit Card</h3>
+          <p>Pay securely with your Visa, MasterCard, or RuPay.</p>
+          <button class="pay-btn" onclick="openModal('Card')">Pay with Card</button>
+        </div>
+        <div class="pay-card">
+          <i class="fa-brands fa-google-pay pay-icon"></i>
+          <h3>UPI</h3>
+          <p>Use Google Pay, PhonePe, Paytm, or any UPI app.</p>
+          <button class="pay-btn" onclick="openModal('UPI')">Pay via UPI</button>
+        </div>
+        <div class="pay-card">
+          <i class="fa-solid fa-building-columns pay-icon"></i>
+          <h3>Net Banking</h3>
+          <p>Pay directly from your bank account with net banking.</p>
+          <button class="pay-btn" onclick="openModal('Net Banking')">Net Banking</button>
+        </div>
+        <div class="pay-card">
+          <i class="fa-solid fa-money-bill-wave pay-icon"></i>
+          <h3>Cash on Delivery</h3>
+          <p>Pay in cash once your order is delivered.</p>
+          <button class="pay-btn" onclick="openModal('COD')">Choose COD</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3 id="modalTitle">Enter Payment Details</h3>
+      <div id="paymentFields"></div>
+      <button onclick="submitPayment()">Proceed to Pay</button>
+    </div>
+  </div>
+
+  
+  <div id="transactionModal" class="modal">
+    <div class="modal-content">
+      <h3>Processing Payment...</h3>
+      <div class="loader"></div>
+    </div>
+  </div>
+
+  
+  <div id="confirmationModal" class="modal">
+    <div class="modal-content">
+      <div class="success-check"><i class="fa-solid fa-circle-check"></i></div>
+      <h3>Order Confirmed!</h3>
+      <div id="orderSummary" class="order-summary"></div>
+      <button onclick="closeConfirmation()">Home</button>
+    </div>
+  </div>
+
+  <footer>
+    <p class="foot">© 2025 <span class="high">Foodsy</span>. All rights reserved.</p>
+  </footer>
+
+  <script>
+    let selectedMethod = "";
+
+    function openModal(method) {
+      selectedMethod = method;
+      const modal = document.getElementById("paymentModal");
+      const fieldsDiv = document.getElementById("paymentFields");
+      fieldsDiv.innerHTML = "";
+
+      if(method === "Card") {
+        document.getElementById("modalTitle").textContent = "Enter Card Details";
+        fieldsDiv.innerHTML = `
+          <input type="text" id="cardNumber" placeholder="Card Number (16 digits)" maxlength="16" inputmode="numeric">
+          <input type="text" id="cardName" placeholder="Name on Card">
+          <input type="text" id="cardCVV" placeholder="CVV" maxlength="3" inputmode="numeric">
+        `;
+      } else if(method === "UPI") {
+        document.getElementById("modalTitle").textContent = "Enter UPI Details";
+        fieldsDiv.innerHTML = `
+          <input type="text" id="upiName" placeholder="Name">
+          <input type="text" id="upiId" placeholder="UPI ID (example@bank)">
+          <input type="tel" id="upiMobile" placeholder="Mobile Number" maxlength="10">
+        `;
+      } else if(method === "Net Banking") {
+        document.getElementById("modalTitle").textContent = "Enter Bank Details";
+        fieldsDiv.innerHTML = `
+          <input type="text" id="bankAcc" placeholder="Bank Account Number">
+          <input type="text" id="bankName" placeholder="Account Holder Name">
+          <input type="text" id="ifsc" placeholder="IFSC Code">
+        `;
+      } else if(method === "COD") {
+        document.getElementById("modalTitle").textContent = "Cash on Delivery";
+        fieldsDiv.innerHTML = `<p>No details required. You will pay on delivery.</p>`;
+        
+        // Change button text to "Confirm Order"
+        document.querySelector("#paymentModal button").textContent = "Confirm Order";
+      }
+
+      modal.style.display = "block";
+    }
+
+    function closeModal() { document.getElementById("paymentModal").style.display = "none"; }
+
+    function submitPayment() {
+      const orderData = JSON.parse(localStorage.getItem("orderData")) || {};
+      let paymentInfo = {};
+      let isValid = true;
+
+      document.querySelectorAll(".error-msg").forEach(e => e.remove());
+      document.querySelectorAll(".input-error").forEach(input => input.classList.remove("input-error"));
+
+      if(selectedMethod === "Card") {
+        const number = document.getElementById("cardNumber");
+        const name = document.getElementById("cardName");
+        const cvv = document.getElementById("cardCVV");
+
+        if(!number.value || number.value.length !== 16) { showError(number, "Card number must be 16 digits"); isValid=false; }
+        if(!name.value.trim()) { showError(name, "Name on card is required"); isValid=false; }
+        if(!cvv.value || cvv.value.length !== 3) { showError(cvv, "CVV must be 3 digits"); isValid=false; }
+
+        paymentInfo = { number: number.value, name: name.value, cvv: cvv.value };
+      } else if(selectedMethod === "UPI") {
+        const name = document.getElementById("upiName");
+        const upiId = document.getElementById("upiId");
+        const mobile = document.getElementById("upiMobile");
+
+        if(!name.value.trim()) { showError(name, "Name is required"); isValid = false; }
+        if(!upiId.value.includes("@")) { showError(upiId, "Enter valid UPI ID"); isValid = false; }
+        if(!/^\d{10}$/.test(mobile.value)) { showError(mobile, "Mobile number must contain 10 digits"); isValid = false; }
+
+        paymentInfo = { name: name.value, upiId: upiId.value, mobile: mobile.value };
+      } else if(selectedMethod === "Net Banking") {
+        const acc = document.getElementById("bankAcc");
+        const name = document.getElementById("bankName");
+        const ifsc = document.getElementById("ifsc");
+
+        if(!acc.value.trim()) { showError(acc, "Account number is required"); isValid=false; }
+        if(!name.value.trim()) { showError(name, "Account holder name is required"); isValid=false; }
+        if(!ifsc.value.trim()) { showError(ifsc, "IFSC code is required"); isValid=false; }
+
+        paymentInfo = { acc: acc.value, name: name.value, ifsc: ifsc.value };
+      } else if(selectedMethod === "COD") {
+        paymentInfo = { message: "Pay on delivery" };
+        orderData.paymentMethod = selectedMethod;
+        orderData.paymentInfo = paymentInfo;
+        localStorage.setItem("finalOrderData", JSON.stringify(orderData));
+
+        closeModal();
+        showConfirmation(orderData);
+        return; 
+      }
+
+
+      if(!isValid) return;
+
+      orderData.paymentMethod = selectedMethod;
+      orderData.paymentInfo = paymentInfo;
+      localStorage.setItem("finalOrderData", JSON.stringify(orderData));
+
+      closeModal();
+      document.getElementById("transactionModal").style.display = "block";
+
+      setTimeout(() => {
+        document.getElementById("transactionModal").style.display = "none";
+        showConfirmation(orderData);
+      }, 4000);
+    }
+
+    function showConfirmation(orderData) {
+      const summaryDiv = document.getElementById("orderSummary");
+
+      let itemsHtml = `
+        <table>
+          <thead>
+            <tr><th>Item</th><th>Qty</th><th>Price</th></tr>
+          </thead>
+          <tbody>
+      `;
+
+      orderData.items.forEach(item => {
+        itemsHtml += `
+          <tr>
+            <td>${item.name}</td>
+            <td>${item.qty}</td>
+            <td>₹${item.unitPrice} × ${item.qty} = ₹${item.total}</td>
+          </tr>
+        `;
+      });
+
+      itemsHtml += `
+          </tbody>
+          <tfoot>
+            <tr><td colspan="2">Total</td><td>₹${orderData.totalAmount}</td></tr>
+          </tfoot>
+        </table>
+        <p><b>Name:</b> ${orderData.userName}</p>
+        <p><b>Payment Method:</b> ${orderData.paymentMethod}</p>
+      `;
+
+      summaryDiv.innerHTML = itemsHtml;
+      document.getElementById("confirmationModal").style.display = "block";
+    }
+
+    function closeConfirmation() {
+      document.getElementById("confirmationModal").style.display = "none";
+      window.location.href = "index.html"; // Redirect after confirmation
+    }
+
+    function showError(inputElement, message) {
+      inputElement.classList.add("input-error");
+      const error = document.createElement("div");
+      error.className = "error-msg";
+      error.textContent = message;
+      inputElement.parentNode.insertBefore(error, inputElement.nextSibling);
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("paymentModal");
+      if(event.target === modal) modal.style.display = "none";
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const linesIcon = document.querySelector(".lines");
+      const navRight = document.querySelector(".navright");
+      linesIcon.addEventListener("click", () => navRight.classList.toggle("show"));
+    });
+  </script>
+
+</body>
+</html>
